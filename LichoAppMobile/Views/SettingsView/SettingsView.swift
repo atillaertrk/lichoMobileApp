@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Firebase
 
 struct SettingsView: View {
     var userid : String
@@ -83,18 +84,77 @@ struct SettingsView: View {
                         
                     } header: {
                         HStack{
-                            Image(systemName: "person.text.rectangle").font(.callout).foregroundStyle(.addButton)
-                            Text("Account").foregroundStyle(.addButton).font(.callout)
+                            Image(systemName: "person.fill").font(.callout).foregroundStyle(.addButton)
+                            Text("Username").foregroundStyle(.addButton).font(.callout)
                         }
                     }
                     Section{
-                        
+//                    not eklenecek
                     } header: {
                         HStack{
                             Image(systemName: "bell.fill").font(.callout).foregroundStyle(.addButton)
                             Text("Notifications").foregroundStyle(.addButton).font(.callout)
                         }
                     }
+                    Section{
+                        VStack(alignment: .leading){
+                            Button(action: {
+                                DispatchQueue.main.async {
+                                    do{
+                                        try Auth.auth().signOut()
+                                    }
+                                    catch {
+                                        print("HATA Test View")
+                                        print(error.localizedDescription)
+                                    }
+                                }
+                            }, label: {
+                                HStack{
+                                    Text("Logout").foregroundStyle(.black)
+                                    Spacer()
+                                    Image(systemName: "arrowshape.right.circle").font(.title2)
+                                }
+                                
+                                
+                            })
+                            Button {
+                                Auth.auth().currentUser?.delete(completion: { error in
+                                    if let error = error {
+                                        print("Hesap silme hatası: \(error.localizedDescription)")
+                                    } else {
+                                        
+                                        let db = Firestore.firestore()
+                                        
+                                        
+                                        db.collection("users").document(userid).delete { error in
+                                            if let error = error {
+                                                print("Firestore veri silme hatası: \(error.localizedDescription)")
+                                            } else {
+                                                UserDefaults.standard.set(false, forKey: "isFirstLogin")
+                                                print("Firestore'dan veriler başarıyla silindi.")
+                                                print("hesap silindi")
+                                            }
+                                        }
+                                    }
+                                    
+                                })
+                            } label: {
+                                HStack{
+                                    Text("Delete Account").foregroundStyle(.pink)
+                                    Spacer()
+                                    Image(systemName: "trash.circle").foregroundStyle(.pink).font(.title2)
+                                }
+                            }.padding(.top, 1)
+                            
+                        }
+                    } header: {
+                        HStack{
+                            Image(systemName: "person.text.rectangle").font(.callout).foregroundStyle(.addButton)
+                            Text("Account").foregroundStyle(.addButton).font(.callout)
+                        }
+                    }
+
+                    
                 }.scrollContentBackground(.hidden)
             }.navigationBarTitleDisplayMode(.inline)
         }.toolbar{
