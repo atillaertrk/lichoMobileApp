@@ -95,6 +95,20 @@ struct TotalCardView: View {
                         }.frame(maxWidth: .infinity)
                         
                     }.frame(maxWidth: .infinity).padding(.horizontal, 25)
+                    HStack {
+                        HStack {
+                            Spacer()
+                            Text("Protein")
+                        }.frame(maxWidth: .infinity)
+                        HStack{
+                            
+                        }.frame(width: 30)
+                        HStack {
+                            Text(String(format: "%.2f", protein))
+                            Spacer()
+                        }.frame(maxWidth: .infinity)
+                        
+                    }.frame(maxWidth: .infinity).padding(.horizontal, 25)
                     if premium {
                         HStack {
                             HStack {

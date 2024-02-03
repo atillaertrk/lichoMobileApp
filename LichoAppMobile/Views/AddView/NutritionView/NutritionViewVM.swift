@@ -10,6 +10,7 @@ import Foundation
 class NutritionViewVM : ObservableObject {
     @Published var searchText = ""
     @Published var isShowListView = false
+    @Published var isShowManuelView = false
     @Published var isAlert : Bool = false
     
     @Published var errMsg = ""

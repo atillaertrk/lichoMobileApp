@@ -22,7 +22,7 @@ struct NutritionView: View {
             VStack{
  
                 HStack {
-                    TextField("\(Image(systemName: "magnifyingglass")) 50g bread, 16.9 oz cola, etc", text: $ViewModel.searchText).ignoresSafeArea(.keyboard, edges: .bottom).keyboardType(.webSearch).italic().padding().font(.callout).foregroundStyle(.grayMode).overlay(
+                    TextField("\(Image(systemName: "magnifyingglass")) a slice of pizza, 16.9 oz cola, etc", text: $ViewModel.searchText).ignoresSafeArea(.keyboard, edges: .bottom).keyboardType(.webSearch).italic().padding().font(.callout).foregroundStyle(.grayMode).overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.darkgreen, lineWidth:0.5)
                     ).padding(.leading).onSubmit {
@@ -60,9 +60,21 @@ struct NutritionView: View {
                 } message: {
                     Text(ViewModel.errMsg)
                 }
+                Text("OR").foregroundStyle(.softBlack).padding(5)
+                VStack{
+                    
+                    Button(action: {
+                        ViewModel.isShowManuelView = true
+                    }, label: {
+                        Text("I want to save nutritional values manually").foregroundStyle(.addButton)
+                    }).sheet(isPresented: $ViewModel.isShowManuelView) {
+                        ManuelValuesView(userid: self.userid).presentationDetents([.fraction(0.65)])
+
+                    }
+                }
                 VStack{
                     if ViewModel.energy > 0 || ViewModel.fat > 0 || ViewModel.fiber > 0 || ViewModel.carbohydrates > 0 || ViewModel.sugar > 0 {
-                        CardView(cal: String(format: "%.2f", ViewModel.energy), sugar: String(format : "%.2f", ViewModel.sugar), fat: String(format : "%.2f", ViewModel.fat), fiber: String(format : "%.2f", ViewModel.fiber), carbonH: String(format : "%.2f", ViewModel.carbohydrates), name: ViewModel.name, quentity: "\(String(ViewModel.quentity)) g").padding().zIndex(-1)
+                        CardView(cal: String(format: "%.2f", ViewModel.energy), sugar: String(format : "%.2f", ViewModel.sugar), fat: String(format : "%.2f", ViewModel.fat), fiber: String(format : "%.2f", ViewModel.fiber), carbonH: String(format : "%.2f", ViewModel.carbohydrates), name: ViewModel.name, quentity: "\(String(format: "%.2f", ViewModel.quentity)) g").padding().zIndex(-1)
                         
                         LargeButtonView(title: "+", action: {
                             guard profile != nil else {
@@ -75,12 +87,16 @@ struct NutritionView: View {
                         }, color: Color.addButton).padding(.horizontal)
                         
                     }
+                    
                     Button {
                         self.ViewModel.isShowListView.toggle()
                     } label: {
                         Text("\(Image(systemName: "filemenu.and.cursorarrow")) View Daily Log").foregroundStyle(.white).padding(6).padding(.horizontal).background(.greenLogo).clipShape(RoundedRectangle(cornerRadius: 10))
                     }.sheet(isPresented: $ViewModel.isShowListView) {
-                        NutritionListView(userid: userid)
+                        HStack{
+                            NutritionListView(userid: userid).presentationDetents([.fraction(0.85)])
+                        }
+                        
                     }.padding(.top)
                     
                 }

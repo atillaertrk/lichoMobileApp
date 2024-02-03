@@ -46,9 +46,9 @@ struct NutritionCalculations {
         
     }
 //    Nutrition Percent for Graphic
-    static func nutritionPercent (nutritionIntake : Double, totalAmountOfCalories : Double, weight: Double?, height: Double?) -> Double {
+    static func nutritionPercent (nutritionTarget : Double, totalAmountOfNutrition : Double, weight: Double?, height: Double?) -> Double {
         
-        let percent = (totalAmountOfCalories * 100) / nutritionIntake
+        let percent = (totalAmountOfNutrition * 100) / nutritionTarget
         if percent <= 100 {
             return percent
         } else if weight == 0 || height == 0 || weight == nil || height == nil {
@@ -88,6 +88,12 @@ struct NutritionCalculations {
         carbs.append(maxCarb)
         carbs.sort()
         return carbs
+    }
+    static func carbIntakeAverage (caloriIntake : Double ) -> Double {
+        let minCarb = (caloriIntake * 0.45) / 4
+        let maxCarb = (caloriIntake * 0.65) / 4
+        
+        return (minCarb + maxCarb) / 2
     }
 //    Amount of Calori to be Taken Daily
     static func caloriNeed (bmr: Double, activiteRange : Int) -> Double {

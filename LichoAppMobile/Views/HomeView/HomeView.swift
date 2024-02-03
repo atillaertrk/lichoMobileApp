@@ -16,32 +16,37 @@ struct HomeView: View {
         return mySwiftData.first { $0.userId == userid }
     }
     @State var percent: CGFloat = 0.0
+    @State var lastPercent : CGFloat = 0.0
     var body: some View {
         NavigationStack{
             ScrollView{
                 VStack{
-                    MainProgressView(caloriesConsumed: 148, caloriNeed: 1480, kind: "Calori", percent: percent).padding(.horizontal).padding(.top, 50).onAppear{
+                    MainProgressView(caloriesConsumed: NutritionCalculations.totalNutritionValues(NutritionList: profile?.nutrition ?? [])["totalEnergy"] ?? 0, caloriNeed: NutritionCalculations.caloriNeed(bmr: UserMeasurementsCalc.calculateBMR(height: profile?.height ?? 0, heightUnit: profile?.heightUnit ?? "cm", weightUnit: profile?.weightUnit ?? "kg", weight: profile?.weight ?? 0, age: profile?.age ?? 20, gender: profile?.gender ?? "male"), activiteRange: profile?.activity ?? 1), kind: "Calori", percent: percent).padding(.horizontal).padding(.top, 50).onAppear{
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                             withAnimation {
                                 
-                                percent = 0.4
+                                percent =  self.lastPercent
                             }
                         }
                         
                     }
-                    ProgressBarComplate(color: Color.orange, percent: 0.3, kind: "Protein", dailyIntake: 137, dailyTarget: 1248, unit: "mg", progressImage: Image("Protein"))
-                    ProgressBarComplate(color: Color.brown, percent: 0.25, kind: "Carb", dailyIntake: 540, dailyTarget: 2749, unit: "mg", progressImage: Image("Carbs"))
-                    ProgressBarComplate(color: Color.blue, percent: 0.80, kind: "Water", dailyIntake: 3021, dailyTarget: 4000, unit: "ml", progressImage: Image("Water"))
+                    ProgressBarComplate(color: Color.orange, percent: NutritionCalculations.nutritionPercent(nutritionTarget: NutritionCalculations.proteinIntake(weight: profile?.weight ?? 0, dailyActive: ConvertFuncs.activityToString(selectedActivity: profile?.activity ?? 1)), totalAmountOfNutrition: NutritionCalculations.totalNutritionValues(NutritionList: profile?.nutrition ?? [])["totalProtein"] ?? 0, weight: profile?.weight, height: profile?.height ?? 0) * 0.01, kind: "Protein", dailyIntake: NutritionCalculations.totalNutritionValues(NutritionList: profile?.nutrition ?? [])["totalProtein"] ?? 0, dailyTarget: NutritionCalculations.proteinIntake(weight: profile?.weight ?? 0, dailyActive: ConvertFuncs.activityToString(selectedActivity: profile?.activity ?? 1)), unit: "g", progressImage: Image("Protein"))
+                    
+                    
+                    
+                    ProgressBarComplate(color: Color.brown, percent: NutritionCalculations.nutritionPercent(nutritionTarget: NutritionCalculations.carbIntakeAverage(caloriIntake: NutritionCalculations.caloriNeed(bmr: UserMeasurementsCalc.calculateBMR(height: profile?.height ?? 0, heightUnit: profile?.heightUnit ?? "cm", weightUnit: profile?.weightUnit ?? "kg", weight: profile?.weight ?? 0, age: profile?.age ?? 20, gender: profile?.gender ?? "male"), activiteRange: profile?.activity ?? 1)), totalAmountOfNutrition: NutritionCalculations.totalNutritionValues(NutritionList: profile?.nutrition ?? [])["totalcarbohydrates"] ?? 0, weight: profile?.weight ?? 0, height: profile?.height ?? 0) * 0.01, kind: "Carb", dailyIntake: NutritionCalculations.totalNutritionValues(NutritionList: profile?.nutrition ?? [])["totalcarbohydrates"] ?? 0, dailyTarget: NutritionCalculations.carbIntakeAverage(caloriIntake: NutritionCalculations.caloriNeed(bmr: UserMeasurementsCalc.calculateBMR(height: profile?.height ?? 0, heightUnit: profile?.heightUnit ?? "cm", weightUnit: profile?.weightUnit ?? "kg", weight: profile?.weight ?? 0, age: profile?.age ?? 20, gender: profile?.gender ?? "male"), activiteRange: profile?.activity ?? 1)), unit: "g", progressImage: Image("Carbs"))
+                    
+                    
+                    
+                    ProgressBarComplate(color: Color.blue, percent: NutritionCalculations.nutritionPercent(nutritionTarget: profile?.waterGoal ?? 2000, totalAmountOfNutrition: profile?.consumedWaterInt ?? 0, weight: profile?.weight ?? 0, height: profile?.height ?? 0) * 0.01, kind: "Water", dailyIntake: profile?.consumedWaterInt ?? 0, dailyTarget: profile?.waterGoal ?? 2000, unit: "ml", progressImage: Image("Water"))
                     LargeButtonView(title: "Check out other nutritional facts   >>>", action: {
                         
                     }, color: Color.greenLogo).padding(.horizontal).padding(.vertical).padding(.bottom)
                     Spacer()
-                    //                    Text("Username : \(profile?.userName ?? "")")
-                    //                    Text("user email : \(profile?.email ?? "")")
-                    //                    Text("user id : \(profile?.userId ?? "")")
-                    //                    Text("height : \(String( format: "%.2f" ,profile?.height ?? 0))")
-                    //                    Text("weight : \(String( format: "%.2f" ,profile?.weight ?? 0))")
-                    //                    Text("age : \(String(profile?.age ?? 0))")
+                    
+                }.onAppear{
+                    self.lastPercent = NutritionCalculations.nutritionPercent(nutritionTarget: NutritionCalculations.caloriNeed(bmr: UserMeasurementsCalc.calculateBMR(height: profile?.height ?? 0, heightUnit: profile?.heightUnit ?? "cm", weightUnit: profile?.weightUnit ?? "kg", weight: profile?.weight ?? 0, age: profile?.age ?? 20, gender: profile?.gender ?? "male"), activiteRange: profile?.activity ?? 1), totalAmountOfNutrition: NutritionCalculations.totalNutritionValues(NutritionList: profile?.nutrition ?? [])["totalEnergy"] ?? 0, weight: profile?.weight ?? 0, height: profile?.height ?? 0) * 0.01
+
                     
                 }.toolbar(content: {
                     ToolbarItem {

@@ -60,6 +60,7 @@
 		2E27AD872B6993F4001C1940 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27AD862B6993F4001C1940 /* UserModel.swift */; };
 		2E27AD8A2B699500001C1940 /* AddWaterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27AD892B699500001C1940 /* AddWaterVM.swift */; };
 		2E27AD8C2B69951A001C1940 /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27AD8B2B69951A001C1940 /* WaterView.swift */; };
+		2E4433BC2B6A6FAD00782706 /* ManuelValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4433BB2B6A6FAD00782706 /* ManuelValuesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		2E27AD862B6993F4001C1940 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		2E27AD892B699500001C1940 /* AddWaterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterVM.swift; sourceTree = "<group>"; };
 		2E27AD8B2B69951A001C1940 /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
+		2E4433BB2B6A6FAD00782706 /* ManuelValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuelValuesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 				2E27AD442B698DBC001C1940 /* NutritionListCard.swift */,
 				2E27AD462B698DD8001C1940 /* NutritionListView.swift */,
 				2E27AD482B698DF3001C1940 /* TotalCardView.swift */,
+				2E4433BB2B6A6FAD00782706 /* ManuelValuesView.swift */,
 			);
 			path = SubNutritionView;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				2E27AD672B699006001C1940 /* SignUpViewVM.swift in Sources */,
 				2E27AD792B699123001C1940 /* SetInfoViewVM.swift in Sources */,
 				2E27AD592B698F2E001C1940 /* ProfileView.swift in Sources */,
+				2E4433BC2B6A6FAD00782706 /* ManuelValuesView.swift in Sources */,
 				2E27AD4F2B698E71001C1940 /* LoginView.swift in Sources */,
 				2E27AD452B698DBC001C1940 /* NutritionListCard.swift in Sources */,
 				2E27AD8A2B699500001C1940 /* AddWaterVM.swift in Sources */,

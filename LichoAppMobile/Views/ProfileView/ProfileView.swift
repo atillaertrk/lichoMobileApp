@@ -62,7 +62,9 @@ struct ProfileView: View {
                         
 
                         
-                                            }.scrollContentBackground(.hidden).toolbar(content: {
+                                            }.scrollContentBackground(.hidden)
+                        .navigationBarTitleDisplayMode(.inline)
+                        .toolbar(content: {
                         ToolbarItem {
                             NavigationLink {
                                 SettingsView(userid: userid)
@@ -93,7 +95,7 @@ struct ProfileView: View {
                     
             }
             
-        }.navigationBarTitleDisplayMode(.inline)
+        }
     }
     
 }

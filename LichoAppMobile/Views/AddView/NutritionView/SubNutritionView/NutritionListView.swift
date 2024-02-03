@@ -28,7 +28,7 @@ struct NutritionListView: View {
             if profile != nil {
                 List {
                     ForEach(profile!.nutrition, id: \.self) { i in
-                        NutritionListCard(nameQuantitiy: "\(i.serving_size_g)g \(i.name) ", fat: i.fat_total_g, cal: i.calories, sugar: i.sugar_g, carb: i.carbohydrates_total_g)
+                        NutritionListCard(nameQuantitiy: "\(String(format: "%.2f", i.serving_size_g))g \(i.name) ", fat: i.fat_total_g, cal: i.calories, sugar: i.sugar_g, carb: i.carbohydrates_total_g)
                         
                     
                                     }.onDelete(perform: { indexSet in
