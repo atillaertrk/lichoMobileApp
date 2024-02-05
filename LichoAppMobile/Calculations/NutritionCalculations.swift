@@ -120,4 +120,8 @@ struct NutritionCalculations {
         }
         return caloriNeed
     }
+    //    Amount of Fiber to be Taken Daily
+    static func fiberNeed (caloriNeed : Double) -> Double {
+        return (caloriNeed / 1000) * 14
+    }
 }

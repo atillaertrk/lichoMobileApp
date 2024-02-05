@@ -19,8 +19,8 @@ struct MainProgressView: View {
         
             ZStack{
                 
-                HomeGraphic(percent: percent).stroke(lineWidth: 50).fill(Color.red).shadow(radius: 5).opacity(1).padding( .bottom, -250).padding(.horizontal, 30).padding(.top, -100)
-                HomeGraphic(percent: 1).stroke(lineWidth: 50).fill(Color.red).shadow(radius: 5).opacity(0.4).padding( .bottom, -250).padding(.horizontal, 30).padding(.top, -100)
+                HomeGraphic(percent: percent).stroke(lineWidth: 20).fill(LinearGradient(colors: [Color.addButton, Color.purple, Color.red], startPoint: .leading, endPoint: .trailing)).shadow(radius: 5).opacity(1).padding( .bottom, -250).padding(.horizontal, 30).padding(.top, -100)
+                HomeGraphic(percent: 1).stroke(lineWidth: 20).fill(LinearGradient(colors: [Color.addButton, Color.purple, Color.red], startPoint: .leading, endPoint: .trailing)).opacity(0.4).padding( .bottom, -250).padding(.horizontal, 30).padding(.top, -100)
                 
                 VStack {
                     Text("Calori Intake").fontWidth(.expanded).font(.title2)
@@ -28,8 +28,8 @@ struct MainProgressView: View {
                         Text("\(String(format: "%.f", percent * 100))%").fontWidth(.expanded).font(.title)
                         Text("\(String(format:"%.2f" ,caloriesConsumed)) kcal")
                     } else {
-                        Text("")
-                        Text("")
+                        Text("0%").fontWidth(.expanded).font(.title)
+                        Text("0 kcal")
                     }
                     
                 }.padding(.top, 80)
@@ -39,7 +39,7 @@ struct MainProgressView: View {
                 Text("0").fontWidth(.expanded).font(.title3).foregroundStyle(.grayMode)
                 Spacer()
                 Text(String(format: "%.1f", caloriNeed)).fontWidth(.expanded).font(.title3).foregroundStyle(.grayMode)
-            }.padding(.horizontal)
+            }.padding(.horizontal).padding(.top, -40)
         }
     }
 }
@@ -63,5 +63,5 @@ struct HomeGraphic: Shape {
     }
 }
 #Preview {
-    MainProgressView(caloriesConsumed: 123.42321, caloriNeed: 12341, kind: "Calorie", percent: 0.32)
+    MainProgressView(caloriesConsumed: 123.42321, caloriNeed: 12341, kind: "Calorie", percent: 0.92)
 }
