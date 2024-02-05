@@ -84,6 +84,12 @@ struct NutritionView: View {
                             }
                             let date = ConvertFuncs.shortDate()
                             profile?.nutrition.append(Nutrition(date: date, name: ViewModel.name, calories: ViewModel.energy, serving_size_g: ViewModel.quentity, fat_total_g: ViewModel.fat, fat_saturated_g: ViewModel.fatSaturated, protein_g: ViewModel.protein, sodium_mg: ViewModel.sodium, potassium_mg: ViewModel.potassium_mg, cholesterol_mg: ViewModel.cholesterol, carbohydrates_total_g: ViewModel.carbohydrates, fiber_g: ViewModel.fiber, sugar_g: ViewModel.sugar))
+                            
+                            do {
+                                try context.save()
+                            } catch {
+//
+                            }
                         }, color: Color.addButton).padding(.horizontal)
                         
                     }

@@ -116,7 +116,8 @@ struct SettingsView: View {
                                 }
                                 
                                 
-                            })
+                            }).buttonStyle(BorderedButtonStyle()).background(.ultraThinMaterial)
+                            
                             Button {
                                 Auth.auth().currentUser?.delete(completion: { error in
                                     if let error = error {
@@ -144,7 +145,7 @@ struct SettingsView: View {
                                     Spacer()
                                     Image(systemName: "trash.circle").foregroundStyle(.pink).font(.title2)
                                 }
-                            }.padding(.top, 1)
+                            }.buttonStyle(BorderedButtonStyle()).background(.ultraThinMaterial).padding(.top, 1)
                             
                         }
                     } header: {

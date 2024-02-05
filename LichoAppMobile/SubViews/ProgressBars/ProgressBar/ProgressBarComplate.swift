@@ -22,14 +22,14 @@ struct ProgressBarComplate: View {
                         HStack {
                             Text(kind).fontWeight(.semibold).font(.headline).padding(.horizontal, 20)
                             Spacer()
-                            Text("\(String(format: "%.1f", dailyIntake)) \(unit)").fontWeight(.semibold).font(.headline).padding(.horizontal, 20)
+                            Text("\(String(format: "%.1f", dailyIntake)) \(unit)").lineLimit(1).fontWeight(.semibold).font(.headline).padding(.horizontal, 20)
                                     }.padding(.top, 15)
                             ProgressBarBarView(percent: self.percent, color: self.color)
                             .padding(.horizontal, 20)
                             HStack{
                                 Text("0 \(unit)").font(.caption).foregroundStyle(.gray).padding(.horizontal, 20)
                                 Spacer()
-                                Text("\(String(format: "%.1f", dailyTarget))  \(unit)").font(.caption).foregroundStyle(.gray).padding(.horizontal, 20)
+                                Text("\(String(format: "%.1f", dailyTarget))  \(unit)").lineLimit(1).font(.caption).foregroundStyle(.gray).padding(.horizontal, 20)
                                         }.padding(.bottom, 10)
                                     }
                                 }.background(color.opacity(0.2)).clipShape(RoundedRectangle(cornerRadius: 25.0)).padding(.horizontal)

@@ -52,6 +52,9 @@ struct NutritionListView: View {
             profile?.nutrition.removeAll { data in
                 !data.date.contains(target)
                     }
+            
+            
+            
 
             
         }

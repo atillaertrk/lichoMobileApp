@@ -21,6 +21,7 @@ struct NutritionCalculations {
         var totalSodium = 0.0
         var totalPotassium_mg = 0.0
         var totalCholesterol = 0.0
+        
         for i in NutritionList {
             
             totalEnergy += i.calories
@@ -37,12 +38,22 @@ struct NutritionCalculations {
             
             
             
+            
         }
         return [
             "totalEnergy" : totalEnergy, "totalFat" : totalFat, "totalFiber" : totalFiber, "totalcarbohydrates" : totalcarbohydrates,
             "totalSugar" : totalSugar, "totalQuentity" : totalQuentity, "totalFatSaturated" : totalFatSaturated, "totalProtein" : totalProtein,
             "totalSodium" : totalSodium, "totalPotassium_mg " : totalPotassium_mg, "totalCholesterol" : totalCholesterol
         ]
+        
+    }
+//    Water Consumed
+   static func totalConsumedWater(array: [Water]) -> Double {
+        var totalConsumed = 0.0
+        for i in array {
+            totalConsumed += i.consumed
+        }
+        return totalConsumed
         
     }
 //    Nutrition Percent for Graphic

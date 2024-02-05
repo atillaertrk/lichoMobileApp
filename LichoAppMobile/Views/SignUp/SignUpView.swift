@@ -49,7 +49,7 @@ struct SignUpView: View {
                 
                 LargeButtonView(title: "Create Account", action: {
                     Task{
-//                        UserDefaults.standard.set(true, forKey: "isFirstLogin")
+                        
                         UserDefaults.standard.isFirstLogin = true
 
                         ViewModel.progressBool = true
@@ -59,7 +59,9 @@ struct SignUpView: View {
                         do{
                             try await AuthModel.createUser(email:ViewModel.email, password: ViewModel.password,  username: ViewModel.username)
                             let user_id = AuthModel.data["id"]
-                            guard let user_id else {return}
+                            guard let user_id else {
+                                ViewModel.progressBool = false
+                                return}
                             let user = UserInfoSwiftDataModel(userId: user_id as? String, userName: ViewModel.username, email: ViewModel.email)
                             context.insert(user)
                             try context.save()
@@ -68,6 +70,7 @@ struct SignUpView: View {
                             ViewModel.progressBool = false
                             print("HATA")
                             print(error.localizedDescription)
+                            ViewModel.errMessage = error.localizedDescription
                         }
                     }
                     
