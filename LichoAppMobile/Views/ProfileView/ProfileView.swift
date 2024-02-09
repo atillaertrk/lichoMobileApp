@@ -28,7 +28,7 @@ struct ProfileView: View {
                         
                         VStack(alignment: .center) {
                             ProfileImage(username: profile?.userName ?? "Atilla")
-                            Text(profile?.userName?.capitalized ?? "admin").foregroundStyle(.grayMode)
+                            Text(profile?.userName?.capitalized ?? "admin").foregroundStyle(.softBlack)
                         }
                         
                         InfoCardView(height: profile?.height ?? 0, weight: profile?.weight ?? 0, BMR: UserMeasurementsCalc.calculateBMR(height: profile?.height ?? 0, heightUnit: profile?.heightUnit ?? "cm", weightUnit: profile?.weightUnit ?? "kg", weight: profile?.weight ?? 0, age: profile?.age ?? 0, gender: profile?.gender ?? "Prefer not to say"), BMI: UserMeasurementsCalc.calculateBmi(height: profile?.height ?? 0, weight: profile?.weight ?? 0, heightUnit: profile?.heightUnit ?? "cm", weightUnit: profile?.weightUnit ?? "kg"), idealWeight: UserMeasurementsCalc.idealWeight(height: profile?.height ?? 0, weightUnit: profile?.weightUnit ?? "kg", heightUnit: profile?.heightUnit ?? "cm", gender: profile?.gender ?? "Prefer not to say"), heightUnit: profile?.heightUnit ?? "cm", weiightUnit: profile?.weightUnit ?? "kg")
@@ -40,7 +40,7 @@ struct ProfileView: View {
                             ProfileEditView(userid: userid)
                         } label: {
                             HStack{
-                                Text("Edit height, weight and goals").foregroundStyle(.black)
+                                Text("Edit height, weight and goals").foregroundStyle(.softBlack)
                                 Spacer()
                                 Image(systemName: "greaterthan.circle").foregroundStyle(.blue)
                                 

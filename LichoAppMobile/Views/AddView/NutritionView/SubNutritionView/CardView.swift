@@ -19,7 +19,7 @@ struct CardView: View {
     var body: some View {
         VStack{
             ZStack {
-                RoundedRectangle(cornerRadius: 25.0).frame(height: 300).zIndex(-1).shadow(radius: 2).foregroundColor(.addButton).shadow(radius: 10)
+                RoundedRectangle(cornerRadius: 25.0).frame(height: 250).zIndex(-1).shadow(radius: 2).foregroundColor(.addButton).shadow(radius: 10)
                 VStack {
                     VStack {
                         Text(name).font(.title2).fontWeight(.light)
@@ -57,13 +57,12 @@ struct CardView: View {
                             Spacer()
                             Text(carbonH).frame(maxWidth: .infinity, alignment: .leading).font(.caption).fontWeight(.medium)
                         })
-                        
-                    }.padding()
-                    Spacer()
-                 
+                        Spacer()
+                    }.padding(.horizontal)
+                    
                 }
                 
-            }.frame(height: 300).foregroundStyle(.silver)
+            }.frame(height: 250).foregroundStyle(.silver)
         }.ignoresSafeArea(.keyboard)
     }
 }

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "brand.png",
+      "filename" : "logo-dark@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "logo-dark@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "logo-dark@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

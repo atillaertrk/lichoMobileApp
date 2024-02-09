@@ -12,17 +12,20 @@ struct AddView: View {
     var body: some View {
         
         NavigationStack{
-            VStack{
-                NavigationLink {
-                    WaterView(userid : userid)
-                } label: {
-                    Image("addWater")
-                    
-                }
-                NavigationLink {
-                    NutritionView(userid: userid)
-                } label: {
-                    Image("addNutrient")
+            ZStack{
+                Color.standartBacground.ignoresSafeArea()
+                VStack(spacing: 40){
+                    NavigationLink {
+                        WaterView(userid : userid)
+                    } label: {
+                        Image("addWater")
+                        
+                    }
+                    NavigationLink {
+                        NutritionView(userid: userid)
+                    } label: {
+                        Image("addNutrient")
+                    }
                 }
             }
            

@@ -15,7 +15,7 @@ struct HeaderView: View {
                 .frame(width: 300)
                 
 
-        }.padding()
+        }.padding(-15)
     }
 }
 

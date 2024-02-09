@@ -20,21 +20,27 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct LichoAppMobileApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var ViewModel = LichoAppMobileAppVM()
+    @State private var isSplashScreenPresented : Bool = true
     @ObservedObject var AuthModelModel = AuthModel()
     var body: some Scene {
         WindowGroup {
-            if ViewModel.userId.isEmpty {
-                LoginView()
-            } else {
-                if ViewModel.isFirstLogin {
-                    IntroPageView(userid: ViewModel.userId)
-                    
+            if !isSplashScreenPresented {
+                if ViewModel.userId.isEmpty {
+                    LoginView()
                 } else {
-                    TabBarView(userid: ViewModel.userId)
+                    if ViewModel.isFirstLogin {
+                        IntroPageView(userid: ViewModel.userId)
+                        
+                    } else {
+                        TabBarView(userid: ViewModel.userId)
+                    }
+                    
+                    
                 }
-                
-                
+            } else {
+                SplashScreenView(isPresented: $isSplashScreenPresented)
             }
+            
             
         }.environmentObject(AuthModelModel).modelContainer(for : UserInfoSwiftDataModel.self)
     }

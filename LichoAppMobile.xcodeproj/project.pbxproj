@@ -60,6 +60,7 @@
 		2E27AD872B6993F4001C1940 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27AD862B6993F4001C1940 /* UserModel.swift */; };
 		2E27AD8A2B699500001C1940 /* AddWaterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27AD892B699500001C1940 /* AddWaterVM.swift */; };
 		2E27AD8C2B69951A001C1940 /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E27AD8B2B69951A001C1940 /* WaterView.swift */; };
+		2E2C0FCF2B7428F900F46C6A /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2C0FCE2B7428F900F46C6A /* SplashScreenView.swift */; };
 		2E4433BC2B6A6FAD00782706 /* ManuelValuesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4433BB2B6A6FAD00782706 /* ManuelValuesView.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,7 @@
 		2E27AD862B6993F4001C1940 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		2E27AD892B699500001C1940 /* AddWaterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWaterVM.swift; sourceTree = "<group>"; };
 		2E27AD8B2B69951A001C1940 /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
+		2E2C0FCE2B7428F900F46C6A /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		2E4433BB2B6A6FAD00782706 /* ManuelValuesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManuelValuesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -335,6 +337,7 @@
 			children = (
 				2E27AD752B6990ED001C1940 /* SetInfo */,
 				2E27AD6E2B699078001C1940 /* IntroPageView */,
+				2E2C0FCE2B7428F900F46C6A /* SplashScreenView.swift */,
 			);
 			path = IntroPage;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				2E27AD8C2B69951A001C1940 /* WaterView.swift in Sources */,
 				2E27AD832B6993B1001C1940 /* NutritionCalculations.swift in Sources */,
 				2E27AD622B698FBB001C1940 /* ProfileEditViewVM.swift in Sources */,
+				2E2C0FCF2B7428F900F46C6A /* SplashScreenView.swift in Sources */,
 				2E27AD7C2B69930F001C1940 /* AuthModel.swift in Sources */,
 				2E27AD102B698763001C1940 /* Extensions.swift in Sources */,
 				2E27AD012B6986EC001C1940 /* LichoAppMobileApp.swift in Sources */,

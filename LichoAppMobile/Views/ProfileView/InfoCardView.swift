@@ -86,9 +86,9 @@ struct InfoCardView: View {
                                     }.frame(maxWidth: .infinity)
             
 
-        }.padding().foregroundColor(.black).background(
+        }.padding().foregroundColor(.softBlack).background(
             RoundedRectangle(cornerRadius: 25.0)
-                .stroke(.black, lineWidth: 0.2)
+                .stroke(.softBlack, lineWidth: 0.2)
         )
         .clipShape(RoundedRectangle(cornerRadius: 25.0)).frame(maxWidth: .infinity)
     }

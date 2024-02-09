@@ -110,7 +110,7 @@ struct SettingsView: View {
                                 }
                             }, label: {
                                 HStack{
-                                    Text("Logout").foregroundStyle(.black)
+                                    Text("Logout").foregroundStyle(.softBlack)
                                     Spacer()
                                     Image(systemName: "arrowshape.right.circle").font(.title2)
                                 }
